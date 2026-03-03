@@ -19,11 +19,10 @@ export default function HomePage() {
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link className="btn" to="/course">Открыть курс</Link>
               <Link className="btn btn-2" to="/lesson/m1-l1">Начать с Lesson 1</Link>
+              <span className="small">Поиск: <span className="kbd">Alt</span> + <span className="kbd">K</span></span>
             </div>
             <div className="hr" />
-            <div className="small">
-              Прогресс: {done}/{totalLessons} уроков.
-            </div>
+            <div className="small">Прогресс: {done}/{totalLessons} уроков.</div>
           </div>
 
           <div className="card">
@@ -36,9 +35,7 @@ export default function HomePage() {
                 <li>Практика — quiz, cloze, matching.</li>
               </ul>
               <div className="hr" />
-              <div className="small">
-                Подсказка: навигация через URL, прогресс сохраняется локально.
-              </div>
+              <div className="small">Подсказка: прогресс сохраняется локально.</div>
             </div>
           </div>
         </div>
@@ -51,7 +48,7 @@ export default function HomePage() {
           <div className="card-pad">
             <h3 style={{ marginTop: 0 }}>Что будет дальше</h3>
             <p className="small">
-              После MVP добавим модули про Git/Code Review, API, базы данных, debugging, а ещё словарь и режим повторения.
+              После MVP добавим режим повторения слов, больше модулей, и отдельные курсы (интервью, API, базы данных, debugging).
             </p>
           </div>
         </div>

@@ -8,6 +8,7 @@
   --card:#fffaf0;
   --border: rgba(31,36,40,.16);
   --shadow: 0 12px 40px rgba(31,36,40,.10);
+  --shadow-2: 0 18px 60px rgba(31,36,40,.18);
   --radius: 16px;
   --radius-2: 12px;
   --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -42,7 +43,7 @@ a:hover{ color: #0d5a3f; }
 .brand-title{ font-weight: 800; letter-spacing:.2px; }
 .badge{ font-family: var(--mono); font-size: 12px; padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.55); }
 
-.nav-links{ display:flex; gap: 14px; flex-wrap: wrap; }
+.nav-links{ display:flex; gap: 14px; flex-wrap: wrap; align-items:center; }
 .nav-links a{ text-decoration: none; border-bottom: 1px dashed rgba(28,107,79,.45); padding-bottom: 2px; }
 .nav-links a:hover{ border-bottom-style: solid; }
 
@@ -135,5 +136,52 @@ a:hover{ color: #0d5a3f; }
 .option:hover{ background: rgba(255,255,255,.78); }
 .option.correct{ border-color: rgba(28,107,79,.55); background: rgba(28,107,79,.10); }
 .option.wrong{ border-color: rgba(122,45,45,.55); background: rgba(122,45,45,.10); }
+
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(31,36,40,.24);
+  backdrop-filter: blur(6px);
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18px;
+}
+
+.modal{
+  width: min(920px, 100%);
+  margin-top: 64px;
+  background: rgba(255,250,240,.92);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+}
+
+.modal-head{
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-title{ font-weight: 800; }
+
+.modal-body{ padding: 14px 16px; }
+
+.results{ display: grid; gap: 10px; margin-top: 12px; }
+.result{
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(255,255,255,.60);
+  padding: 12px 12px;
+}
+.result:hover{ background: rgba(255,255,255,.78); }
+.result-title{ font-weight: 800; }
 
 .footer{ margin: 30px 0 10px; color: var(--muted); font-size: 13px; }
