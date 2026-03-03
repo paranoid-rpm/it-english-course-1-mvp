@@ -47,7 +47,7 @@ export default function App() {
           <Route path="/lesson/:lessonId" element={<LessonPage />} />
         </Routes>
 
-        <div className="footer">Сделано как “ламповый” учебник: много смысла, минимум шума.</div>
+        <div className="footer">IT English · Course 1 MVP</div>
       </div>
     </div>
   )

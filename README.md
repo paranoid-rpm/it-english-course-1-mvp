@@ -1,6 +1,6 @@
 # IT English — Course 1 (MVP)
 
-Interactive “lamplike/retro” website to learn English for IT.
+Interactive website to learn English for IT.
 
 ## Local dev
 
@@ -18,5 +18,5 @@ npm run preview
 
 ## Deploy (GitHub Pages)
 
-This project uses hash routing, so it works well on GitHub Pages.
+This project uses hash routing.
 Build artifacts are in `dist/`.

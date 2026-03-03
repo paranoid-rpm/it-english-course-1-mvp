@@ -65,9 +65,9 @@ export default function SearchModal({
 
           <div className="results">
             {q.trim().length === 0 ? (
-              <div className="small">Начни печатать, чтобы увидеть результаты.</div>
+              <div className="small">Введите запрос, чтобы увидеть результаты.</div>
             ) : results.length === 0 ? (
-              <div className="small">Ничего не найдено. Попробуй другое слово или короче запрос.</div>
+              <div className="small">Ничего не найдено.</div>
             ) : (
               results.map((r) => (
                 <Link
@@ -89,7 +89,7 @@ export default function SearchModal({
           </div>
 
           <div style={{ height: 10 }} />
-          <div className="small">Подсказка: ищет по теории, словарю и фразам.</div>
+          <div className="small">Поиск работает по тексту уроков.</div>
         </div>
       </div>
     </div>

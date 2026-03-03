@@ -12,9 +12,9 @@ export default function HomePage() {
       <div className="hero">
         <div className="hero-inner">
           <div>
-            <h1 className="h1">Английский для IT — без воды</h1>
+            <h1 className="h1">Английский для IT</h1>
             <p className="lead">
-              Один курс‑основа: словарь, фразы и тренажёры, которые реально нужны в разработке и командной работе.
+              Курс‑основа: словарь, фразы и тренажёры для работы с задачами, кодом и командной коммуникацией.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <Link className="btn" to="/course">Открыть курс</Link>
@@ -35,7 +35,7 @@ export default function HomePage() {
                 <li>Практика — quiz, cloze, matching.</li>
               </ul>
               <div className="hr" />
-              <div className="small">Подсказка: прогресс сохраняется локально.</div>
+              <div className="small">Прогресс сохраняется локально.</div>
             </div>
           </div>
         </div>
@@ -46,18 +46,18 @@ export default function HomePage() {
       <div className="grid grid-2">
         <div className="card">
           <div className="card-pad">
-            <h3 style={{ marginTop: 0 }}>Что будет дальше</h3>
+            <h3 style={{ marginTop: 0 }}>Содержание</h3>
             <p className="small">
-              После MVP добавим режим повторения слов, больше модулей, и отдельные курсы (интервью, API, базы данных, debugging).
+              Уроки включают: цели, теорию, словарь, готовые фразы и практику с проверкой.
             </p>
           </div>
         </div>
 
         <div className="card">
           <div className="card-pad">
-            <h3 style={{ marginTop: 0 }}>Ламповый стиль</h3>
+            <h3 style={{ marginTop: 0 }}>Навигация</h3>
             <p className="small">
-              Тёплая “бумага”, аккуратные карточки, простая навигация — как старые учебные сайты, но с современной читабельностью.
+              Открой курс, выбери урок, пройди практику. Поиск помогает быстро найти термины и фразы.
             </p>
           </div>
         </div>
