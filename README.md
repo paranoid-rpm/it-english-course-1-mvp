@@ -25,5 +25,8 @@ Steps (one-time):
 2. Set "Build and deployment" → "Source" to "GitHub Actions".
 3. Push or merge into `main`.
 
+Notes:
+- Do not use "Deploy from a branch" for this project, otherwise GitHub Pages will serve the source `index.html` (it imports `/src/main.tsx`) and you will see 404 errors.
+
 The site will be available at:
 - https://paranoid-rpm.github.io/it-english-course-1-mvp/
