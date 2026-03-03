@@ -12,6 +12,7 @@ export type SrsState = {
   version: 1
   cards: Record<string, CardState>
   known: Record<string, true>
+  history: Record<string, number>
 }
 
 const KEY = 'it-english.srs.v1'
@@ -20,19 +21,33 @@ function now() {
   return Date.now()
 }
 
+function dayKey(ts = now()) {
+  const d = new Date(ts)
+  const y = d.getFullYear()
+  const m = String(d.getMonth() + 1).padStart(2, '0')
+  const dd = String(d.getDate()).padStart(2, '0')
+  return `${y}-${m}-${dd}`
+}
+
+function recordHistory(s: SrsState, count = 1) {
+  const k = dayKey()
+  s.history[k] = (s.history[k] ?? 0) + count
+}
+
 export function loadSrs(): SrsState {
   try {
     const raw = localStorage.getItem(KEY)
-    if (!raw) return { version: 1, cards: {}, known: {} }
+    if (!raw) return { version: 1, cards: {}, known: {}, history: {} }
     const data = JSON.parse(raw) as SrsState
-    if (!data || typeof data !== 'object') return { version: 1, cards: {}, known: {} }
+    if (!data || typeof data !== 'object') return { version: 1, cards: {}, known: {}, history: {} }
     return {
       version: 1,
       cards: data.cards ?? {},
-      known: data.known ?? {}
+      known: data.known ?? {},
+      history: (data as any).history ?? {}
     }
   } catch {
-    return { version: 1, cards: {}, known: {} }
+    return { version: 1, cards: {}, known: {}, history: {} }
   }
 }
 
@@ -49,6 +64,7 @@ export function setKnown(cardId: string, known: boolean) {
   const s = loadSrs()
   if (known) s.known[cardId] = true
   else delete s.known[cardId]
+  recordHistory(s, 1)
   saveSrs(s)
 }
 
@@ -93,6 +109,7 @@ export function rateCard(cardId: string, rating: Rating) {
     lastRating: rating
   }
 
+  recordHistory(s, 1)
   saveSrs(s)
 }
 
@@ -121,4 +138,25 @@ export function pickDue(cardIds: string[]): string | null {
   }
 
   return best?.id ?? null
+}
+
+export function getStreakDays(): number {
+  const s = loadSrs()
+  let streak = 0
+  const d = new Date()
+
+  while (true) {
+    const k = dayKey(d.getTime())
+    const n = s.history[k] ?? 0
+    if (n <= 0) break
+    streak += 1
+    d.setDate(d.getDate() - 1)
+  }
+
+  return streak
+}
+
+export function getTodayReviews(): number {
+  const s = loadSrs()
+  return s.history[dayKey()] ?? 0
 }

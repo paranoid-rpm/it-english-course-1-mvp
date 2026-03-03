@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom'
+import { useMemo, useState } from 'react'
 import { course1 } from '../../data/course1'
 import { collectPhrases, collectVocab } from '../../lib/vocab'
-import { countDue, loadSrs } from '../../lib/srs'
+import { countDue, getStreakDays, getTodayReviews, loadSrs } from '../../lib/srs'
 
 export default function VocabPage() {
-  const vocab = collectVocab(course1)
-  const phrases = collectPhrases(course1)
+  const vocab = useMemo(() => collectVocab(course1), [])
+  const phrases = useMemo(() => collectPhrases(course1), [])
 
-  const cardIds = vocab.map((v) => v.id)
-  const due = countDue(cardIds)
+  const termIds = vocab.map((v) => v.id)
+  const phraseIds = phrases.map((p) => p.id)
+
   const srs = loadSrs()
   const knownCount = Object.keys(srs.known).length
+
+  const dueTerms = countDue(termIds)
+  const duePhrases = countDue(phraseIds)
+
+  const streak = getStreakDays()
+  const today = getTodayReviews()
 
   return (
     <div className="grid" style={{ gap: 16 }}>
@@ -19,7 +27,7 @@ export default function VocabPage() {
           <div className="tag">Словарь</div>
           <h2 style={{ margin: '10px 0 6px' }}>Термины и фразы курса</h2>
           <div className="small">
-            Термины: {vocab.length}. Фразы: {phrases.length}. Изучено: {knownCount}. На повторение: {due}.
+            Термины: {vocab.length}. Фразы: {phrases.length}. Изучено: {knownCount}. Повторение (термины): {dueTerms}. Повторение (фразы): {duePhrases}. Серия: {streak} дн. Сегодня: {today}.
           </div>
           <div style={{ height: 12 }} />
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -39,10 +47,10 @@ function VocabList() {
   const vocab = collectVocab(course1)
 
   const modules = [{ id: 'all', title: 'Все модули' }, ...course1.modules.map((m) => ({ id: m.id, title: m.title }))]
-  const [moduleId, setModuleId] = React.useState<string>('all')
-  const [q, setQ] = React.useState('')
+  const [moduleId, setModuleId] = useState<string>('all')
+  const [q, setQ] = useState('')
 
-  const filtered = React.useMemo(() => {
+  const filtered = useMemo(() => {
     const qq = q.trim().toLowerCase()
     return vocab
       .filter((v) => (moduleId === 'all' ? true : v.moduleId === moduleId))
@@ -96,10 +104,10 @@ function VocabList() {
 function PhraseList() {
   const phrases = collectPhrases(course1)
   const modules = [{ id: 'all', title: 'Все модули' }, ...course1.modules.map((m) => ({ id: m.id, title: m.title }))]
-  const [moduleId, setModuleId] = React.useState<string>('all')
-  const [q, setQ] = React.useState('')
+  const [moduleId, setModuleId] = useState<string>('all')
+  const [q, setQ] = useState('')
 
-  const filtered = React.useMemo(() => {
+  const filtered = useMemo(() => {
     const qq = q.trim().toLowerCase()
     return phrases
       .filter((p) => (moduleId === 'all' ? true : p.moduleId === moduleId))
@@ -139,5 +147,3 @@ function PhraseList() {
     </div>
   )
 }
-
-import React from 'react'
