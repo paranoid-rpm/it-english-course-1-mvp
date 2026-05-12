@@ -5,6 +5,9 @@ import CoursePage from './pages/CoursePage'
 import LessonPage from './pages/LessonPage'
 import VocabPage from './pages/VocabPage'
 import ReviewPage from './pages/ReviewPage'
+import PracticePage from './pages/PracticePage'
+import DictationPage from './pages/DictationPage'
+import LiteraturePage from './pages/LiteraturePage'
 import SearchModal from './widgets/SearchModal'
 import { course1 } from '../data/course1'
 
@@ -33,8 +36,11 @@ export default function App() {
           <div className="nav-links">
             <Link to="/">Главная</Link>
             <Link to="/course">Курс</Link>
+            <Link to="/practice">Практика+</Link>
+            <Link to="/dictation">Диктант</Link>
             <Link to="/vocab">Словарь</Link>
             <Link to="/review">Повторение</Link>
+            <Link to="/literature">Литература</Link>
             <button className="btn" onClick={() => setSearchOpen(true)}>
               Поиск <span className="kbd">Alt</span>+<span className="kbd">K</span>
             </button>
@@ -48,12 +54,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/course" element={<CoursePage />} />
+          <Route path="/practice" element={<PracticePage />} />
+          <Route path="/dictation" element={<DictationPage />} />
           <Route path="/vocab" element={<VocabPage />} />
           <Route path="/review" element={<ReviewPage />} />
+          <Route path="/literature" element={<LiteraturePage />} />
           <Route path="/lesson/:lessonId" element={<LessonPage />} />
         </Routes>
 
-        <div className="footer">IT English · Course 1 MVP</div>
+        <div className="footer">IT English · Course 1+ · Workflow, Practice, Dictation, Literature</div>
       </div>
     </div>
   )

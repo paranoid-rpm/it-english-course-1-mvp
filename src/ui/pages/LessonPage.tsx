@@ -34,7 +34,7 @@ export default function LessonPage() {
         <div className="card-pad">
           <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
             <div>
-              <div className="tag">Lesson</div>
+              <div className="tag">Урок</div>
               <h2 style={{ margin: '10px 0 6px' }}>{lesson.title}</h2>
               <div className="small">~{lesson.minutes} минут</div>
             </div>
@@ -48,6 +48,7 @@ export default function LessonPage() {
               >
                 Отметить как завершённый
               </button>
+              <Link className="btn" to="/practice">Практика+</Link>
               <Link className="btn btn-2" to="/course">К курсу</Link>
             </div>
           </div>

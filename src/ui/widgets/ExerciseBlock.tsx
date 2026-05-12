@@ -14,7 +14,7 @@ function Quiz({ ex }: { ex: Extract<LessonExercise, { type: 'quiz' }> }) {
 
   return (
     <div className="exercise">
-      <div style={{ fontWeight: 800, marginBottom: 10 }}>Quiz</div>
+      <div style={{ fontWeight: 800, marginBottom: 10 }}>Тест</div>
       <div style={{ marginBottom: 10 }}>{ex.prompt}</div>
       <div className="grid" style={{ gap: 10 }}>
         {ex.options.map((o) => {
@@ -52,7 +52,7 @@ function Quiz({ ex }: { ex: Extract<LessonExercise, { type: 'quiz' }> }) {
       </div>
       {picked !== null && correctOption ? (
         <div className="small" style={{ marginTop: 10 }}>
-          Correct answer: <span style={{ fontFamily: 'var(--mono)' }}>{correctOption.text}</span>
+          Правильный ответ: <span style={{ fontFamily: 'var(--mono)' }}>{correctOption.text}</span>
         </div>
       ) : null}
     </div>
@@ -68,12 +68,12 @@ function Cloze({ ex }: { ex: Extract<LessonExercise, { type: 'cloze' }> }) {
 
   return (
     <div className="exercise">
-      <div style={{ fontWeight: 800, marginBottom: 10 }}>Cloze</div>
+      <div style={{ fontWeight: 800, marginBottom: 10 }}>Заполни пропуск</div>
       <div style={{ marginBottom: 10, fontFamily: 'var(--mono)' }}>{ex.sentence}</div>
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
         <input
           className="input"
-          placeholder="Type the missing word"
+          placeholder="Введите пропущенное слово"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           disabled={done}
@@ -87,13 +87,13 @@ function Cloze({ ex }: { ex: Extract<LessonExercise, { type: 'cloze' }> }) {
           }}
           disabled={done}
         >
-          Check
+          Проверить
         </button>
-        {!done && ex.hint ? <span className="small">Hint: {ex.hint}</span> : null}
+        {!done && ex.hint ? <span className="small">Подсказка: {ex.hint}</span> : null}
       </div>
       {done ? (
         <div className="small" style={{ marginTop: 10 }}>
-          {isCorrect ? 'Correct.' : `Not quite. Answer: ${ex.answer}`}
+          {isCorrect ? 'Верно.' : `Пока нет. Ответ: ${ex.answer}`}
         </div>
       ) : null}
     </div>
@@ -126,9 +126,9 @@ function Matching({ ex }: { ex: Extract<LessonExercise, { type: 'matching' }> })
 
   return (
     <div className="exercise">
-      <div style={{ fontWeight: 800, marginBottom: 10 }}>Matching</div>
+      <div style={{ fontWeight: 800, marginBottom: 10 }}>Сопоставление</div>
       <div className="small" style={{ marginBottom: 10 }}>
-        Pick left + right. Progress: {correct}/{total}.
+        Выбери левую и правую часть. Прогресс: {correct}/{total}.
       </div>
 
       <div className="grid grid-2">
@@ -145,7 +145,7 @@ function Matching({ ex }: { ex: Extract<LessonExercise, { type: 'matching' }> })
               }}
             >
               <span style={{ fontFamily: 'var(--mono)' }}>{l}</span>
-              <span className="small">{left === l ? 'selected' : ''}</span>
+              <span className="small">{left === l ? 'выбрано' : ''}</span>
             </button>
           ))}
         </div>
@@ -164,7 +164,7 @@ function Matching({ ex }: { ex: Extract<LessonExercise, { type: 'matching' }> })
                   setLeft('')
                   setRight('')
                 } else {
-                  setWrong('Wrong match, try again.')
+                  setWrong('Неверная пара, попробуй еще раз.')
                 }
 
                 const newCorrect = isPairOk(left, r) ? correct + 1 : correct
@@ -172,7 +172,7 @@ function Matching({ ex }: { ex: Extract<LessonExercise, { type: 'matching' }> })
               }}
             >
               <span style={{ fontFamily: 'var(--mono)' }}>{r}</span>
-              <span className="small">{right === r ? 'selected' : ''}</span>
+              <span className="small">{right === r ? 'выбрано' : ''}</span>
             </button>
           ))}
         </div>

@@ -25,11 +25,11 @@ export default function ReviewPage() {
     const vocab = collectVocab(course1)
     return vocab.map((v) => ({
       id: v.id,
-      frontLabel: 'Term',
+      frontLabel: 'Термин',
       front: v.term,
-      backLabel: 'Meaning (RU)',
+      backLabel: 'Значение (RU)',
       back: v.meaningRu,
-      extraLabel: 'Example',
+      extraLabel: 'Пример',
       extra: v.example,
       lessonId: v.lessonId,
       lessonTitle: v.lessonTitle
@@ -40,9 +40,9 @@ export default function ReviewPage() {
     const phrases = collectPhrases(course1)
     return phrases.map((p) => ({
       id: p.id,
-      frontLabel: 'Phrase',
+      frontLabel: 'Фраза',
       front: p.en,
-      backLabel: 'Meaning (RU)',
+      backLabel: 'Значение (RU)',
       back: p.ru,
       lessonId: p.lessonId,
       lessonTitle: p.lessonTitle
@@ -83,6 +83,7 @@ export default function ReviewPage() {
               Фразы
             </button>
             <Link className="btn" to="/vocab">К словарю</Link>
+            <Link className="btn" to="/dictation">К диктанту</Link>
             <Link className="btn btn-2" to="/course">К курсу</Link>
           </div>
         </div>

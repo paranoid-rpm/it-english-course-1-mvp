@@ -32,6 +32,7 @@ export default function VocabPage() {
           <div style={{ height: 12 }} />
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <Link className="btn" to="/review">Повторение</Link>
+            <Link className="btn" to="/dictation">Диктант</Link>
             <Link className="btn btn-2" to="/course">К курсу</Link>
           </div>
         </div>

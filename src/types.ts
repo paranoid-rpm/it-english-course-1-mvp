@@ -44,3 +44,38 @@ export type Course = {
   subtitle: string
   modules: Module[]
 }
+
+export type DictationWord = {
+  id: string
+  term: string
+  meaningRu: string
+  hint?: string
+}
+
+export type RuleExercise = {
+  id: string
+  title: string
+  rule: string
+  sentence: string
+  answer: string
+  explanation: string
+}
+
+export type BookLink = {
+  label: string
+  url: string
+}
+
+export type Book = {
+  id: string
+  title: string
+  author: string
+  level: 'Beginner' | 'Intermediate' | 'Advanced'
+  language: 'EN' | 'RU' | 'EN/RU'
+  summary: string
+  whatInside: string[]
+  buyLinks: BookLink[]
+  readOnlineUrl?: string
+  downloadUrl?: string
+  onSiteNotes: string[]
+}
